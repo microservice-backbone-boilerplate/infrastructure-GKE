@@ -4,6 +4,7 @@
 *.iml
 *.ipr
 /out/
+/.idea/
 
 .DS_Store
 
@@ -15,3 +16,4 @@
 .classpath
 .settings
 bin
+
