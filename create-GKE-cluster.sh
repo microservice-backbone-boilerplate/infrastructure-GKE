@@ -14,7 +14,6 @@ gcloud config set compute/region ${REGION}
 
 echo "02 ---- create GKE cluster ----"
 
-# create a GKE cluster if not available
 gcloud beta container clusters create "core-cluster" \
             --project ${PROJECT_ID} \
             --region ${REGION} \
@@ -31,5 +30,8 @@ gcloud beta container clusters create "core-cluster" \
             --tags "core"
 
 echo "03 ---- configure kubectl command ----"
+
+gcloud container clusters get-credentials ${CLUSTER_NAME} \
+            --region=${REGION}
 
 kubectl cluster-info
