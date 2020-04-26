@@ -2,6 +2,8 @@
 
 source .env
 
+echo "01 ---- set env variables ----"
+
 echo "gcp-project-id=${PROJECT_ID}"
 echo "region=${REGION}"
 
@@ -10,16 +12,23 @@ gcloud config set compute/zone ${ZONE}
 gcloud config set compute/region ${REGION}
 
 
-echo "Starting ---- GKE cluster for core-apps ----"
+echo "02 ---- create GKE cluster ----"
 
 # create a GKE cluster if not available
-gcloud container clusters create ${CLUSTER_NAME} \
-                      --region ${REGION} \
-                      --project ${PROJECT_ID} \
-                      --num-nodes 3
+gcloud beta container clusters create "core-cluster" \
+            --project ${PROJECT_ID} \
+            --region ${REGION} \
+            --machine-type ${MACHINE_TYPE} \
+            --metadata disable-legacy-endpoints=true \
+            --num-nodes "3" \
+            --no-enable-basic-auth \
+            --enable-stackdriver-kubernetes \
+            --enable-ip-alias \
+            --no-enable-master-authorized-networks \
+            --addons HorizontalPodAutoscaling,HttpLoadBalancing \
+            --enable-autoupgrade \
+            --enable-autorepair \
+            --tags "core"
 
 # configure kubectl command w/ K8s cluster !
 kubectl cluster-info
-
-echo "Starting ---- GKE cluster for CI/CD stack ----"
-#toDo: implement here
