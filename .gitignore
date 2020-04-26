@@ -1,0 +1,17 @@
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+/out/
+
+.DS_Store
+
+.accessKeys
+
+### VSCode ###
+.vscode
+.project
+.classpath
+.settings
+bin
