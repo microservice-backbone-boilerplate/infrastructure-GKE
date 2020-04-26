@@ -20,7 +20,7 @@ gcloud beta container clusters create "core-cluster" \
             --region ${REGION} \
             --machine-type ${MACHINE_TYPE} \
             --metadata disable-legacy-endpoints=true \
-            --num-nodes "3" \
+            --num-nodes ${NUM_NODES} \
             --no-enable-basic-auth \
             --enable-stackdriver-kubernetes \
             --enable-ip-alias \
@@ -30,5 +30,6 @@ gcloud beta container clusters create "core-cluster" \
             --enable-autorepair \
             --tags "core"
 
-# configure kubectl command w/ K8s cluster !
+echo "03 ---- configure kubectl command ----"
+
 kubectl cluster-info
