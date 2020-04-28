@@ -1,3 +1,9 @@
 # infrastructure-GKE
 
-creates infrastructure architecture on GKE (clusters, etc..)
+Creates infrastructure architecture on GKE (clusters, etc..)
+
+## How to Start
+
+1. `git clone ..` on your local or gshell
+2. Update `.env` file and
+3. Run `./create-GKE-cluster.sh` to create GKE cluster and to configure `kubectl`.
