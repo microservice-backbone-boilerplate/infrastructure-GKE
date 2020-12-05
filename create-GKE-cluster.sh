@@ -35,3 +35,5 @@ gcloud container clusters get-credentials ${CLUSTER_NAME} \
             --region=${REGION}
 
 kubectl cluster-info
+
+#gcloud container clusters resize --region europe-west4 core-cluster --num-nodes=0
